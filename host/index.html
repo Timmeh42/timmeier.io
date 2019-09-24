@@ -2,59 +2,7 @@
 <html lang="en">
     <head>
         <title>File host test</title>
-        <style>
-            #drop-area {
-                border: 10px dashed black;
-                border-radius: 20px;
-                width: 480px;
-                padding: 20px;
-                margin: 100px auto;
-            }
-
-            #drop-area.highlight {
-                border-color: red;
-            }
-
-            p {
-                margin-top: 0;
-            }
-
-            .my-form {
-                margin-bottom: 10px;
-            }
-
-            #gallery {
-                margin-top: 10px;
-            }
-
-            #gallery img {
-                width: 150px;
-                margin-bottom: 10px;
-                margin-right: 10px;
-                vertical-align: middle
-            }
-
-            .button {
-                display: inline-block;
-                padding: 10px;
-                background-color: gray;
-                cursor: pointer;
-                border: 1px solid gray;
-                border-radius: 5px;
-            }
-
-            .button:hover {
-                background-color: lightgray; 
-            }
-
-            #fileElem {
-                display: none;
-            }
-
-            #paste-upload-box {
-                display: none;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         
@@ -68,64 +16,8 @@
 
             </div>
         </div>
+        <div id="file-queue"></div>
 
-        <script>
-            let dropArea = document.getElementById('drop-area');
-
-            ['dragenter', 'dragover', 'dragleave', 'drop',].forEach(eventName => {
-                dropArea.addEventListener(eventName, preventDefaults, false);
-            });
-
-            function preventDefaults (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-
-            ['dragenter', 'dragover',].forEach(eventName => {
-                dropArea.addEventListener(eventName, highlight, false);
-            });
-            
-            ['dragleave', 'drop',].forEach(eventName => {
-                dropArea.addEventListener(eventName, unhighlight, false);
-            });
-
-            function highlight (event) {
-                dropArea.classList.add('highlight');
-            }
-            
-            function unhighlight (event) {
-                dropArea.classList.remove('highlight');
-            }
-
-            dropArea.addEventListener('drop', handleDrop, false);
-
-            function handleDrop (event) {
-                let files = event.dataTransfer.files;
-                handleFiles(files);
-            }
-
-            function handleFiles (files) {
-                ([...files]).forEach(uploadFile);
-            }
-
-            function uploadFile (file) {
-                const url = 'api.php';
-                let formData = new FormData();
-                formData.append('file', file);
-
-                fetch(url, {
-                    method: 'POST',
-                    body: formData,
-                })
-                .then(() => {})
-                .catch((error) => {console.log(error)})
-            }
-
-            document.addEventListener('paste', (event) => {
-                console.log(event);
-                // check the github link you bookmarked from xPaw's 'theLounge' file upload example
-            });
-
-        </script>
+        <script src="uploader.js"></script>
     </body>
 </html>
