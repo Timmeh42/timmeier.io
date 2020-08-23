@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'Goudy Bookletter 1911';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/goudybookletter1911-regular-webfont.woff') format('woff');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sen';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/sen-regular-webfont.woff') format('woff');
+    font-display: swap;
+}
+
+$card-width: 25rem;
+$card-height: 18rem;
+$card-margin: 1rem;
+$card-space-width: $card-width + 2 * $card-margin;
+$card-space-height: $card-height + 2 * $card-margin;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: radial-gradient(circle at top, #dfccb4, #423b30);
+    background-attachment: fixed;
+    font-family: 'Sen', sans-serif;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+    padding: 0.25rem;
+    text-align: center;
+    color: #221f1a;
+}
+
+h1 {
+    margin: 0.5rem 0 1rem;
+    color: #4f463c;
+    font-family: 'Goudy Bookletter 1911', serif;
+    font-weight: normal;
+    font-size: 1.75rem;
+    text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2), 0 2px 2px white;
+}
+
+p {
+    line-height: 1.4;
+    &:last-of-type {
+        margin: 0;
+    }
+}
+
+.article-card {
+    background: white;
+    background-image: linear-gradient(#f7ede9, #e1d8d0);
+    border: 2px solid;
+    border-color: #ffffff #e8e8e8 #98999f;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2), 0 2rem 2rem rgba(0, 0, 0, 0.3);
+    width: $card-width;
+    height: $card-height;
+    flex: 0 1 auto;
+    padding: 1rem;
+    margin: $card-margin;
+    margin-bottom: 0;
+
+    border-radius: 0.4rem;
+    position: sticky;
+
+    @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+            top: #{$card-margin * $i};
+            @media (min-width: 2 * $card-space-width) {
+                top: unset;
+            }
+        }
+    }
+
+    @media (min-width: $card-space-width) {
+        margin-bottom: $card-margin;
+    }
+
+    @media (min-width: 2 * $card-space-width) {
+        position: relative;
+        border-radius: 0.25rem;
+        margin-bottom: $card-margin;
+    }
+
+    > p {
+        > img {
+            width: 50%;
+            float: right;
+            margin-left: 0.5rem;
+            border: 1px dashed #888;
+        }
+    }
+}
+
+.article-post {
+    width: calc(100% - 2 * #{$card-margin});
+    max-width: 40rem;
+    padding: 1rem;
+    margin: 2rem auto;
+    background-image: linear-gradient(#f7ede9, #e1d8d0);
+    border: 2px solid;
+    border-color: #ffffff #e8e8e8 #98999f;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2), 0 2rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.spacer-card {
+    width: $card-width;
+    height: calc(100vh - #{$card-space-height});
+    flex: 0 1 auto;
+    margin: $card-margin;
+
+    @media (min-width: 2 * $card-space-width) {
+        display: none;
+    }
+}
+
+.card-container {
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+
+    @media (min-width: 1 * $card-space-width) {
+        max-width: 1 * $card-space-width;
+    }
+    @media (min-width: 2 * $card-space-width) {
+        max-width: 2 * $card-space-width;
+        padding-top: 3rem;
+    }
+    @media (min-width: 3 * $card-space-width) {
+        max-width: 3 * $card-space-width;
+    }
+}

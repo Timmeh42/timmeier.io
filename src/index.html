@@ -1,0 +1,12 @@
+---
+layout: base.html
+title: Tim Meier
+---
+<div class="card-container">
+    {%- for card in collections.cards -%}
+    <article class="article-card">
+        {{ card.templateContent }}
+    </article>
+    {%- endfor -%}
+    <div class="spacer-card"></div>
+</div>
