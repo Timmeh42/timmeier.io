@@ -4,7 +4,7 @@ title: Tim Meier
 ---
 <div class="card-container">
     {%- for card in collections.cards -%}
-    <article class="article-card">
+    <article class="article-card {% if card.data.post-link %}post-link{% endif %}">
         {{ card.templateContent }}
     </article>
     {%- endfor -%}

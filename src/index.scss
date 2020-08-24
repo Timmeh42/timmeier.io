@@ -44,18 +44,58 @@ footer {
 }
 
 h1 {
-    margin: 0.5rem 0 1rem;
+    margin: 0 0 1rem;
     color: #4f463c;
     font-family: 'Goudy Bookletter 1911', serif;
     font-weight: normal;
     font-size: 1.75rem;
     text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2), 0 2px 2px white;
+
+    > a {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
 }
 
 p {
+    font-size: 0.825rem;
     line-height: 1.4;
-    &:last-of-type {
-        margin: 0;
+    margin-top: 0;
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    @media (min-width: 1 * $card-space-width) {
+        font-size: 1rem;
+    }
+}
+
+a {
+    color: #6a420f;
+    text-decoration: none;
+
+    &:link {
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+    }
+
+    &:visited {
+        color: #6a420f;
+    }
+
+    &:hover, &:focus {
+        color: #a2610f;
+        text-decoration-style: solid;
+    }
+
+    &:active {
+        color: #a2610f;
     }
 }
 
@@ -65,10 +105,11 @@ p {
     border: 2px solid;
     border-color: #ffffff #e8e8e8 #98999f;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2), 0 2rem 2rem rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.2s;
     width: $card-width;
     height: $card-height;
     flex: 0 1 auto;
-    padding: 1rem;
+    padding: 1.2rem;
     margin: $card-margin;
     margin-bottom: 0;
 
@@ -102,6 +143,10 @@ p {
             border: 1px dashed #888;
         }
     }
+
+    &.post-link:hover {
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2), 0 3rem 4rem rgba(0, 0, 0, 0.3);
+    }
 }
 
 .article-post {
@@ -111,6 +156,7 @@ p {
     margin: 2rem auto;
     background-image: linear-gradient(#f7ede9, #e1d8d0);
     border: 2px solid;
+    border-radius: 0.25rem;
     border-color: #ffffff #e8e8e8 #98999f;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2), 0 2rem 2rem rgba(0, 0, 0, 0.3);
 }
