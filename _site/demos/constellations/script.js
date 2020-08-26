@@ -20,8 +20,10 @@ function renderConstellations(timestamp) {
     // if previous frame was too far in the past (eg when tab was in background), limit dt to 1 second
     const dt = Math.min((timestamp - prevTime) / 1000, 1);
     prevTime = timestamp;
+    ctx.globalAlpha = 1;
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, cWidth, cHeight);
+    ctx.strokeStyle = 'black';
 
     // draw the stars and constellations
     ctx.setTransform(1, 0, 0, 1, -starDist, -starDist);
@@ -40,10 +42,10 @@ function renderConstellations(timestamp) {
                     const star2 = localStars[s2];
                     let dist = Math.sqrt((star.x - star2.x) ** 2 + (star.y - star2.y) ** 2);
                     if (dist < starDist) {
+                        ctx.globalAlpha = ((starDist - dist) / starDist);
                         ctx.beginPath();
                         ctx.moveTo(star.x, star.y);
                         ctx.lineTo(star2.x, star2.y);
-                        ctx.strokeStyle = 'rgba(0, 0, 0, ' + ((starDist - dist) / starDist) + ')';
                         ctx.stroke();
                     }
                 }
@@ -51,10 +53,10 @@ function renderConstellations(timestamp) {
                     const starn = neighbourStars[sn];
                     let dist = Math.sqrt((star.x - starn.x) ** 2 + (star.y - starn.y) ** 2);
                     if (dist < starDist) {
+                        ctx.globalAlpha = ((starDist - dist) / starDist);
                         ctx.beginPath();
                         ctx.moveTo(star.x, star.y);
                         ctx.lineTo(starn.x, starn.y);
-                        ctx.strokeStyle = 'rgba(0, 0, 0, ' + ((starDist - dist) / starDist) + ')';
                         ctx.stroke();
                     }
                 }
