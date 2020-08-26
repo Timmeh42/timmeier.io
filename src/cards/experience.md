@@ -3,6 +3,6 @@ tags: cards
 permalink: false
 ---
 # Work & History
-Currently working at Rawson Properties developing internal web apps.
+Working at Rawson Properties since June 2018 developing internal web apps.
 
 Previously studied Mechanical Engineering at the University of Cape Town.
