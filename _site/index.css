@@ -36,10 +36,13 @@ iframe {
   width: 100%;
   height: 30rem;
   border: 1px dashed #888;
-  border-radius: 0.5rem; }
+  border-radius: 0.5rem;
+  margin-bottom: 1rem; }
   @media (max-width: 530px) {
     iframe {
       height: 20rem; } }
+  iframe:last-child {
+    margin-bottom: 0; }
 
 h1 {
   margin: 0 0 1rem;
