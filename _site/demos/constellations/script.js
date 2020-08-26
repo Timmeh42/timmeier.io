@@ -20,8 +20,8 @@ function renderConstellations(timestamp) {
     // if previous frame was too far in the past (eg when tab was in background), limit dt to 1 second
     const dt = Math.min((timestamp - prevTime) / 1000, 1);
     prevTime = timestamp;
-    const ctx = cCanvas.getContext('2d');
-    ctx.clearRect(0, 0, cWidth, cHeight);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, cWidth, cHeight);
 
     // draw the stars and constellations
     ctx.setTransform(1, 0, 0, 1, -starDist, -starDist);
@@ -173,6 +173,7 @@ function placeStars(stars, quads) {
 }
 
 const cCanvas = document.getElementById('constellation');
+const ctx = cCanvas.getContext('2d', {alpha: false});
 
 const minSpeed = 10;
 const maxSpeed = 50;
