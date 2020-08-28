@@ -26,11 +26,10 @@ $card-space-height: $card-height + 2 * $card-margin;
 
 body {
     width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
     background-image: radial-gradient(circle at top, #dfccb4, #423b30);
-    background-color: #4e463a;
+    background-color: #423b30;
     background-attachment: fixed;
     font-family: 'Sen', sans-serif;
 }
