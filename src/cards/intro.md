@@ -2,6 +2,7 @@
 tags: cards
 permalink: false
 title: Tim Meier
+date: 2020-08-23 18:00:00
 ---
 I'm a front-end web developer from Cape Town. This site is a simple portfolio
 site of experiments and some longer form writeups.
