@@ -3,10 +3,10 @@ function onResize(e) {
     console.log(
         `${el.contentRect.width} x ${el.contentRect.height}`
     );
-    cCanvas.width = el.contentRect.width;
-    cCanvas.height = el.contentRect.height;
-    cWidth = el.contentRect.width;
-    cHeight = el.contentRect.height;
+    cWidth = Math.floor(el.contentRect.width * dpiScale);
+    cHeight = Math.floor(el.contentRect.height * dpiScale);
+    cCanvas.width = cWidth;
+    cCanvas.height = cHeight;
 
     quads = generateQuads();
     placeStars(stars, quads);
@@ -182,6 +182,8 @@ const maxSpeed = 50;
 const starDist = 100;
 const density = 3;
 
+const dpiScale = window.devicePixelRatio;
+
 let cWidth = 1600;
 let cHeight = 400;
 let quadsW = 0;
@@ -195,8 +197,8 @@ let drawTimes = 0;
 let frameTimes = 0;
 
 const cBounds = cCanvas.getBoundingClientRect();
-cWidth = cBounds.width;
-cHeight = cBounds.height;
+cWidth = Math.floor(cBounds.width * dpiScale);
+cHeight = Math.floor(cBounds.height * dpiScale);
 
 let quads = generateQuads();
 let stars = generateStars();
