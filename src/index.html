@@ -4,9 +4,9 @@ title: Tim Meier
 ---
 <div class="card-container">
     {%- for card in collections.cards -%}
-    {% if card.data.post-link %}
-    <article class="article-card post-link">
-        <h1><a href="{{ card.data.post-link }}">{{ card.data.title }}</a></h1>
+    {% if card.data.title-link %}
+    <article class="article-card title-link">
+        <h1><a href="{{ card.data.title-link }}">{{ card.data.title }}</a></h1>
     {% else %}
     <article class="article-card">
         <h1>{{ card.data.title }}</h1>

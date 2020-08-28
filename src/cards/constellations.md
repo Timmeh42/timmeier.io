@@ -1,7 +1,7 @@
 ---
 tags: cards
 permalink: false
-post-link: /posts/constellations/
+title-link: /posts/constellations/
 title: Constellations Effect
 ---
 ![still shot of constellations effect](/assets/constellations.png)

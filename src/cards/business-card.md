@@ -1,7 +1,7 @@
 ---
 tags: cards
 permalink: false
-post-link: /posts/business-card/
+title-link: /posts/business-card/
 title: CSS 3D Business Card
 ---
 ![still shot of constellations effect](/assets/business-card.png)
