@@ -64,7 +64,6 @@ function renderConstellations(timestamp) {
         }
     }
     ctx.setTransform(1, 0, 0, 1, 0, 0);
-    drawTimes += Date.now() - startTime;
 
     // update star positions and move them to the correct quad if needed
     for (let qx = quadsW - 1; qx >= 0; qx--) {
@@ -96,8 +95,7 @@ function renderConstellations(timestamp) {
     // push frame time to an array, and log the average frame time every 100 frames
     timerFrames += 1;
     if (timerFrames >= timerWindow) {
-        console.log(`Avg frametime: ${frameTimes / timerWindow}\n- draw: ${drawTimes / timerWindow}\n- update: ${(frameTimes - drawTimes) / timerWindow}`);
-        drawTimes = 0;
+        console.log(`Avg frametime: ${frameTimes / timerWindow}`);
         frameTimes = 0;
         timerFrames = 0;
     }
@@ -193,7 +191,6 @@ let prevTime = 0;
 
 let timerFrames = 0;
 let timerWindow = 100;
-let drawTimes = 0;
 let frameTimes = 0;
 
 const cBounds = cCanvas.getBoundingClientRect();
