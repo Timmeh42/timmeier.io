@@ -10,13 +10,13 @@ title: timmeier.io
     <link rel="preload" href="/assets/goudybookletter1911-regular-webfont.woff2" type="font/woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="/assets/sen-regular-webfont.woff2" type="font/woff2" as="font" crossorigin="anonymous">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
+    <style>
+    {% capture scss %}
+        {% include ../index.scss %}
+    {% endcapture %}
+    {{ scss | sass | safe }}
+    </style>
 </head>
-{% capture scss %}
-    {% include ../index.scss %}
-{% endcapture %}
-<style>
-{{ scss | sass | safe }}
-</style>
 <body>
     {{ content }}
     <footer>
