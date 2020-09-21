@@ -1,4 +1,6 @@
 const sass = require('node-sass');
+const markdownIt = require('markdown-it');
+const markdownItImsize = require('markdown-it-imsize');
 module.exports = function (eleventyConfig) {
     eleventyConfig.setTemplateFormats([
         'css',
@@ -11,6 +13,8 @@ module.exports = function (eleventyConfig) {
         return sass.renderSync({data: sassContent}).css;
     });
     eleventyConfig.addWatchTarget('src/index.scss');
+
+    eleventyConfig.setLibrary('md', markdownIt().use(markdownItImsize));
 
     return {
         dir: {
