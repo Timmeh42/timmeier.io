@@ -14,7 +14,7 @@ module.exports = function (eleventyConfig) {
     });
     eleventyConfig.addWatchTarget('src/index.scss');
 
-    eleventyConfig.setLibrary('md', markdownIt().use(markdownItImsize));
+    eleventyConfig.setLibrary('md', markdownIt({html: true}).use(markdownItImsize));
 
     return {
         dir: {
