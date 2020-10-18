@@ -121,7 +121,14 @@ a {
     background-image: linear-gradient(#f7ede9, #e1d8d0);
     border: 2px solid;
     border-color: #ffffff #e8e8e8 #98999f;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2), 0 2rem 2rem rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 1.5px 1.5px rgba(0, 0, 0, 0.056),
+        0 3.5px 3.5px rgba(0, 0, 0, 0.081),
+        0 6.6px 6.6px rgba(0, 0, 0, 0.1),
+        0 11.8px 11.8px rgba(0, 0, 0, 0.119),
+        0 22.1px 22.1px rgba(0, 0, 0, 0.144),
+        0 53px 53px rgba(0, 0, 0, 0.2)
+    ;
     transition: box-shadow 0.2s;
     width: $card-width;
     height: $card-height;
@@ -162,7 +169,14 @@ a {
     }
 
     &.title-link:hover {
-        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2), 0 3rem 4rem rgba(0, 0, 0, 0.3);
+        box-shadow:
+            0 2.9px 2.9px rgba(0, 0, 0, 0.056),
+            0 7px 7px rgba(0, 0, 0, 0.081),
+            0 13.1px 13.1px rgba(0, 0, 0, 0.1),
+            0 23.5px 23.5px rgba(0, 0, 0, 0.119),
+            0 43.9px 43.9px rgba(0, 0, 0, 0.144),
+            0 105px 105px rgba(0, 0, 0, 0.2)
+        ;
     }
 }
 
