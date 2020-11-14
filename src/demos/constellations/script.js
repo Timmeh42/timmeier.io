@@ -74,8 +74,15 @@ function renderConstellations(timestamp) {
                 const star = quad.stars[s];
                 if (star.lastupdate !== timestamp) {
                     star.lastupdate = timestamp;
-                    star.x = (quadsW * starDist + star.x + star.dx * dt) % (quadsW * starDist);
-                    star.y = (quadsH * starDist + star.y + star.dy * dt) % (quadsH * starDist);
+                    let mDist = Math.sqrt((star.x - mX) ** 2 + (star.y - mY) ** 2);
+                    let mdx = 0;
+                    let mdy = 0;
+                    if (mDist < mRadius) {
+                        mdx = (star.x - mX) * (mRadius - mDist) / mRadius;
+                        mdy = (star.y - mY) * (mRadius - mDist) / mRadius;
+                    }
+                    star.x = (quadsW * starDist + star.x + star.dx * dt + mdx) % (quadsW * starDist);
+                    star.y = (quadsH * starDist + star.y + star.dy * dt + mdy) % (quadsH * starDist);
                     const nqx = Math.floor(star.x / starDist);
                     const nqy = Math.floor(star.y / starDist);
                     if (nqx === qx && nqy === qy) {
@@ -186,6 +193,15 @@ let cWidth = 1600;
 let cHeight = 400;
 let quadsW = 0;
 let quadsH = 0;
+
+let mX = 0;
+let mY = 0;
+const mRadius = 200;
+
+cCanvas.addEventListener('mousemove', e => {
+    mX = e.offsetX + starDist;
+    mY = e.offsetY + starDist;
+});
 
 let prevTime = 0;
 
