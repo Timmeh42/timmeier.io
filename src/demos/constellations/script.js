@@ -30,12 +30,14 @@ function renderConstellations(timestamp) {
                 const star = quad.stars[s];
                 if (star.lastupdate !== timestamp) {
                     star.lastupdate = timestamp;
-                    let mDist = Math.sqrt((star.x - mX) ** 2 + (star.y - mY) ** 2);
                     let mdx = 0;
                     let mdy = 0;
-                    if (mDist < mRadius) {
-                        mdx = (star.x - mX) * (mRadius - mDist) / mRadius;
-                        mdy = (star.y - mY) * (mRadius - mDist) / mRadius;
+                    if ((star.x > mX - mRadius) && (star.x < mX + mRadius) && (star.y > mY - mRadius) && (star.y < mY + mRadius)) {
+                        let mDist = Math.sqrt((star.x - mX) ** 2 + (star.y - mY) ** 2);
+                        if (mDist < mRadius) {
+                            mdx = (star.x - mX) * (mRadius - mDist) / mRadius;
+                            mdy = (star.y - mY) * (mRadius - mDist) / mRadius;
+                        }
                     }
                     star.x = (quadsW * starDist + star.x + star.dx * dt + mdx) % (quadsW * starDist);
                     star.y = (quadsH * starDist + star.y + star.dy * dt + mdy) % (quadsH * starDist);
