@@ -100,7 +100,7 @@ a {
   background-image: linear-gradient(#f7ede9, #e1d8d0);
   border: 2px solid;
   border-color: #ffffff #e8e8e8 #98999f;
-  box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.056), 0 3.5px 3.5px rgba(0, 0, 0, 0.081), 0 6.6px 6.6px rgba(0, 0, 0, 0.1), 0 11.8px 11.8px rgba(0, 0, 0, 0.119), 0 22.1px 22.1px rgba(0, 0, 0, 0.144), 0 53px 53px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.2s;
   width: 25rem;
   height: 18rem;
@@ -110,6 +110,9 @@ a {
   margin-bottom: 0;
   border-radius: 0.4rem;
   position: sticky; }
+  @media (min-width: 54rem) {
+    .article-card {
+      box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.056), 0 3.5px 3.5px rgba(0, 0, 0, 0.081), 0 6.6px 6.6px rgba(0, 0, 0, 0.1), 0 11.8px 11.8px rgba(0, 0, 0, 0.119), 0 22.1px 22.1px rgba(0, 0, 0, 0.144), 0 53px 53px rgba(0, 0, 0, 0.2); } }
   .article-card:nth-child(1) {
     top: 1rem; }
   .article-card:nth-child(2) {
@@ -145,8 +148,9 @@ a {
     float: right;
     margin-left: 0.5rem;
     border: 1px dashed #888; }
-  .article-card.title-link:hover {
-    box-shadow: 0 2.9px 2.9px rgba(0, 0, 0, 0.056), 0 7px 7px rgba(0, 0, 0, 0.081), 0 13.1px 13.1px rgba(0, 0, 0, 0.1), 0 23.5px 23.5px rgba(0, 0, 0, 0.119), 0 43.9px 43.9px rgba(0, 0, 0, 0.144), 0 105px 105px rgba(0, 0, 0, 0.2); }
+  @media (min-width: 54rem) {
+    .article-card.title-link:hover {
+      box-shadow: 0 2.9px 2.9px rgba(0, 0, 0, 0.056), 0 7px 7px rgba(0, 0, 0, 0.081), 0 13.1px 13.1px rgba(0, 0, 0, 0.1), 0 23.5px 23.5px rgba(0, 0, 0, 0.119), 0 43.9px 43.9px rgba(0, 0, 0, 0.144), 0 105px 105px rgba(0, 0, 0, 0.2); } }
 
 .article-post {
   width: calc(100% - 2 * 1rem);
@@ -157,7 +161,10 @@ a {
   border: 2px solid;
   border-radius: 0.25rem;
   border-color: #ffffff #e8e8e8 #98999f;
-  box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.056), 0 3.5px 3.5px rgba(0, 0, 0, 0.081), 0 6.6px 6.6px rgba(0, 0, 0, 0.1), 0 11.8px 11.8px rgba(0, 0, 0, 0.119), 0 22.1px 22.1px rgba(0, 0, 0, 0.144), 0 53px 53px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1em 2em rgba(0, 0, 0, 0.5); }
+  @media (min-width: 54rem) {
+    .article-post {
+      box-shadow: 0 1.5px 1.5px rgba(0, 0, 0, 0.056), 0 3.5px 3.5px rgba(0, 0, 0, 0.081), 0 6.6px 6.6px rgba(0, 0, 0, 0.1), 0 11.8px 11.8px rgba(0, 0, 0, 0.119), 0 22.1px 22.1px rgba(0, 0, 0, 0.144), 0 53px 53px rgba(0, 0, 0, 0.2); } }
 
 .spacer-card {
   width: 25rem;
