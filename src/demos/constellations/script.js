@@ -200,7 +200,7 @@ let quadsH = 0;
 
 let mX = 0;
 let mY = 0;
-const mRadius = 200;
+const mRadius = 100;
 
 cCanvas.addEventListener('mousemove', e => {
     mX = e.offsetX + starDist;
