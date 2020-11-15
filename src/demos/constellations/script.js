@@ -30,17 +30,18 @@ function renderConstellations(timestamp) {
                 const star = quad.stars[s];
                 if (star.lastupdate !== timestamp) {
                     star.lastupdate = timestamp;
-                    let mdx = 0;
-                    let mdy = 0;
+                    star.x += star.dx * dt;
+                    star.y += star.dy * dt;
+                    // check if star is too close to mouse and move it out if true
                     if ((star.x > mX - mRadius) && (star.x < mX + mRadius) && (star.y > mY - mRadius) && (star.y < mY + mRadius)) {
                         let mDist = Math.sqrt((star.x - mX) ** 2 + (star.y - mY) ** 2);
                         if (mDist < mRadius) {
-                            mdx = (star.x - mX) * (mRadius - mDist) / mRadius;
-                            mdy = (star.y - mY) * (mRadius - mDist) / mRadius;
+                            star.x += (star.x - mX) * (mRadius - mDist) / mRadius;
+                            star.y += (star.y - mY) * (mRadius - mDist) / mRadius;
                         }
                     }
-                    star.x = (quadsW * starDist + star.x + star.dx * dt + mdx) % (quadsW * starDist);
-                    star.y = (quadsH * starDist + star.y + star.dy * dt + mdy) % (quadsH * starDist);
+                    star.x = (quadsW * starDist + star.x) % (quadsW * starDist);
+                    star.y = (quadsH * starDist + star.y) % (quadsH * starDist);
                     const nqx = Math.floor(star.x / starDist);
                     const nqy = Math.floor(star.y / starDist);
                     if (nqx === qx && nqy === qy) {
