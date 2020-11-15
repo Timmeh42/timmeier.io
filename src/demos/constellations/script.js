@@ -20,12 +20,45 @@ function renderConstellations(timestamp) {
     // if previous frame was too far in the past (eg when tab was in background), limit dt to 1 second
     const dt = Math.min((timestamp - prevTime) / 1000, 1);
     prevTime = timestamp;
+
+    // update star positions and move them to the correct quad if needed
+    for (let qx = quadsW - 1; qx >= 0; qx--) {
+        for (let qy = quadsH - 1; qy >= 0; qy--) {
+            const quad = quads[qx][qy];
+            const freshStars = [];
+            for (let s = 0; s < quad.stars.length; s++) {
+                const star = quad.stars[s];
+                if (star.lastupdate !== timestamp) {
+                    star.lastupdate = timestamp;
+                    let mDist = Math.sqrt((star.x - mX) ** 2 + (star.y - mY) ** 2);
+                    let mdx = 0;
+                    let mdy = 0;
+                    if (mDist < mRadius) {
+                        mdx = (star.x - mX) * (mRadius - mDist) / mRadius;
+                        mdy = (star.y - mY) * (mRadius - mDist) / mRadius;
+                    }
+                    star.x = (quadsW * starDist + star.x + star.dx * dt + mdx) % (quadsW * starDist);
+                    star.y = (quadsH * starDist + star.y + star.dy * dt + mdy) % (quadsH * starDist);
+                    const nqx = Math.floor(star.x / starDist);
+                    const nqy = Math.floor(star.y / starDist);
+                    if (nqx === qx && nqy === qy) {
+                        freshStars.push(star);
+                    } else {
+                        quads[nqx][nqy].stars.push(star);
+                    }
+                } else {
+                    freshStars.push(star);
+                }
+            }
+            quad.stars = freshStars;
+        }
+    }
+
+    // draw the stars and constellations
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, cWidth, cHeight);
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 1;
-
-    // draw the stars and constellations
     ctx.setTransform(1, 0, 0, 1, -starDist, -starDist);
     for (let qx = quadsW - 1; qx >= 0; qx--) {
         for (let qy = quadsH - 1; qy >= 0; qy--) {
@@ -63,40 +96,8 @@ function renderConstellations(timestamp) {
             }
         }
     }
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-    // update star positions and move them to the correct quad if needed
-    for (let qx = quadsW - 1; qx >= 0; qx--) {
-        for (let qy = quadsH - 1; qy >= 0; qy--) {
-            const quad = quads[qx][qy];
-            const freshStars = [];
-            for (let s = 0; s < quad.stars.length; s++) {
-                const star = quad.stars[s];
-                if (star.lastupdate !== timestamp) {
-                    star.lastupdate = timestamp;
-                    let mDist = Math.sqrt((star.x - mX) ** 2 + (star.y - mY) ** 2);
-                    let mdx = 0;
-                    let mdy = 0;
-                    if (mDist < mRadius) {
-                        mdx = (star.x - mX) * (mRadius - mDist) / mRadius;
-                        mdy = (star.y - mY) * (mRadius - mDist) / mRadius;
-                    }
-                    star.x = (quadsW * starDist + star.x + star.dx * dt + mdx) % (quadsW * starDist);
-                    star.y = (quadsH * starDist + star.y + star.dy * dt + mdy) % (quadsH * starDist);
-                    const nqx = Math.floor(star.x / starDist);
-                    const nqy = Math.floor(star.y / starDist);
-                    if (nqx === qx && nqy === qy) {
-                        freshStars.push(star);
-                    } else {
-                        quads[nqx][nqy].stars.push(star);
-                    }
-                } else {
-                    freshStars.push(star);
-                }
-            }
-            quad.stars = freshStars;
-        }
-    }
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     frameTimes += Date.now() - startTime;
 
     // push frame time to an array, and log the average frame time every 100 frames
