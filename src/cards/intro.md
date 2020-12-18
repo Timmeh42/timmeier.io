@@ -4,7 +4,7 @@ permalink: false
 title: Tim Meier
 date: 2020-08-23 18:00:00
 ---
-I'm a front-end web developer from Cape Town. This site is a simple portfolio
-site of experiments and some longer form writeups.
+![A photograph of me](/assets/mugshot.jpg =178x178)
 
-As of August 2020, more posts are still to come to fill out the site.
+I'm a front-end web developer from Cape Town. This site is a simple portfolio
+site of experiments and maybe some longer form writeups.
