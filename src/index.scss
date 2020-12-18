@@ -165,6 +165,7 @@ a {
     > p {
         > img {
             width: 50%;
+            object-fit: cover;
             float: right;
             margin-left: 0.5rem;
             border: 1px dashed #888;
