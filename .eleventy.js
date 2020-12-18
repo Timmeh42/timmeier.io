@@ -9,6 +9,7 @@ module.exports = function (eleventyConfig) {
     ]);
     eleventyConfig.addPassthroughCopy('src/assets');
     eleventyConfig.addPassthroughCopy('src/demos');
+    eleventyConfig.addPassthroughCopy('src/CNAME');
     eleventyConfig.addLiquidFilter('sass', function (sassContent) {
         return sass.renderSync({data: sassContent}).css;
     });
