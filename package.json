@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Timmeh42/timmeier.io#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy": "^0.11.1",
     "node-sass": "^4.14.1"
   },
   "dependencies": {
