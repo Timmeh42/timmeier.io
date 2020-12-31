@@ -40,7 +40,10 @@ Once I had all the glyphs made, I did some basic kerning, ran FontForge's autohi
 then generated a `.woff2` file to use on the site. It came out to 4.23KB, less than half
 the size of the previous Sen font I was using (which had already been passed through
 [FontSquirrel's webfont generator](https://www.fontsquirrel.com/tools/webfont-generator)
-to trim it down).
+to trim it down). As an additional trick, I base-64 encoded it and put it into a data-uri
+in the site's styles so it didn't need an additional request to load; this method uses
+~33% more data (5.8KB instead of 4.23KB) but this is still far below the size of Sen at
+9.33KB (and an additional network request).
 
 Of course, my effort was hardly up to the level of real professionally-made typefaces:
 it has only one weight (regular), the set of characters is limited, the kerning is bad
