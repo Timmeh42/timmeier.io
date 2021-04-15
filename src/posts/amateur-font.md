@@ -42,8 +42,10 @@ the size of the previous Sen font I was using (which had already been passed thr
 [FontSquirrel's webfont generator](https://www.fontsquirrel.com/tools/webfont-generator)
 to trim it down). As an additional trick, I base-64 encoded it and put it into a data-uri
 in the site's styles so it didn't need an additional request to load; this method uses
-~33% more data (5.8KB instead of 4.23KB) but this is still far below the size of Sen at
-9.33KB (and an additional network request).
+~33% more data than the font file (5.8KB instead of 4.23KB) but this is still far below
+the size of Sen at 9.33KB. Unfortunately this also means that the browser can't cache the
+font file and redownloads it for every page; on a site like this with very few pages this
+might be okay as a fun trick, but on anything bigger it would be counterproductive.
 
 Of course, my effort was hardly up to the level of real professionally-made typefaces:
 it has only one weight (regular), the set of characters is limited, the kerning is bad
